@@ -16,8 +16,40 @@
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/custom.js"></script>
   <script src="assets/contactform/contactform.js"></script>
+  <style>
+  .back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
+}
+  </style>
+  <script>
+  $(document).ready(function(){
+     $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+        
+        $('#back-to-top').tooltip('show');
+
+});
+  </script>
 </head>
 <body>
   <app-root></app-root>
+  <a id="back-to-top" href="#" class="btn btn-success btn-sm back-to-top" role="button" data-toggle="tooltip" data-placement="left"><img src="assets/img/up.png" width="20px"></a>
 </body>
 </html>
